@@ -9,7 +9,7 @@
 ###< symfony/framework-bundle ###
 
 ###> symfony/asset-mapper ###
-/public/assets/
+# /public/assets/
 ###< symfony/asset-mapper ###
 
 ###> symfony/phpunit-bridge ###
