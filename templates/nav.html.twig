@@ -1,0 +1,21 @@
+<nav class="flex items-center justify-between flex-wrap border-b border-slate-200 bg-slate-50 p-6">
+    <div class="flex items-center flex-shrink-0 text-slate-600 mr-6">
+        <img class="fill-current h-8 w-8 mr-3" src="{{ asset('images/logo.svg') }}"/>
+        <span class="font-semibold text-xl tracking-tight">Web Summer Camp 2023</span>
+    </div>
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+            <a href="#" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                Profile
+            </a>
+            <a href="{{ path('users_list') }}" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                Users
+            </a>
+        </div>
+        <div class="text-sm">
+            <a href="" class="block mt-4 lg:inline-block lg:mt-0">
+                Logout
+            </a>
+        </div>
+    </div>
+</nav>

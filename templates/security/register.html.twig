@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="mx-auto">
+        {{ form_start(form_view) }}
+        <h1>Create your account</h1>
+        {{ form_end(form_view) }}
+        <p class="text-xs m-4 text-slate-600">Already have an account? <a href="{{ path('login') }}">Sign in here.</a></p>
+    </div>
+{%  endblock %}
