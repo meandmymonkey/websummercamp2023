@@ -14,15 +14,17 @@ security:
             security: false
         main:
             provider: default
+            custom_authenticators:
+                - App\Security\Authentication\FormAuthenticator
             login_throttling:
                 max_attempts: 3
-            form_login:
-                login_path: login
-                check_path: login
-                username_parameter: username
-                password_parameter: password
-                enable_csrf: true
-                csrf_parameter: token
+            #form_login:
+            #    login_path: login
+            #    check_path: login
+            #    username_parameter: username
+            #    password_parameter: password
+            #    enable_csrf: true
+            #    csrf_parameter: token
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800
