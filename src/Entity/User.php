@@ -94,7 +94,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function promoteToAdmin(): void
     {
-        dump('admin!');
         $this->isAdmin = true;
     }
 
