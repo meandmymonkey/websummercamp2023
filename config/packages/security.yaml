@@ -17,7 +17,7 @@ security:
             stateless: true
             custom_authenticator:
                 - App\Security\Authentication\JsonLoginAuthenticator
-                #- App\Security\Authentication\JwtAuthenticator
+                - App\Security\Authentication\JwtAuthenticator
         main:
             provider: default
             custom_authenticators:
