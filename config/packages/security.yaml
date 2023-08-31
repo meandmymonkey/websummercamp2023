@@ -14,11 +14,20 @@ security:
             security: false
         main:
             provider: default
+            login_throttling:
+                max_attempts: 3
             form_login:
                 login_path: login
                 check_path: login
                 username_parameter: username
                 password_parameter: password
+                enable_csrf: true
+                csrf_parameter: token
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                remember_me_parameter: remember
+                name: remember
             logout:
                 path: logout
                 target: home
