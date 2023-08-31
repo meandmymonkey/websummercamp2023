@@ -12,6 +12,12 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        api:
+            pattern: ^/api
+            stateless: true
+            custom_authenticator:
+                - App\Security\Authentication\JsonLoginAuthenticator
+                #- App\Security\Authentication\JwtAuthenticator
         main:
             provider: default
             custom_authenticators:
