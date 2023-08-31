@@ -18,6 +18,8 @@
         "lcobucci/jwt": "4.2",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.23",
+        "scheb/2fa-bundle": "^6.9",
+        "scheb/2fa-email": "^6.9",
         "symfony/asset": "6.3.*",
         "symfony/asset-mapper": "6.3.*",
         "symfony/console": "6.3.*",

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if authenticationError %}
+        <div class="alert">
+            Invalid code.
+        </div>
+    {% endif %}
+
+    {% set providerInfo = { email: 'Email', google: 'Google Authenticator', backup_codes: 'Use Backup Code' } %}
+
+    <form class="content-box" action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}" method="post" novalidate>
+        <h1>Enter your {{ providerInfo[twoFactorProvider] }} Code</h1>
+        <div>
+            <label for="code">Auth Code</label><br>
+            <input type="text" name="{{ authCodeParameterName }}" id="code" autofocus inputmode="numeric" pattern="[0-9]*">
+        </div>
+        {% if displayTrustedOption %}
+            <div>
+                <label for="trusted">
+                <input id="trusted" type="checkbox" name="{{ trustedParameterName }}" /> Trust this device</label>
+            </div>
+        {% endif %}
+        {% if isCsrfProtectionEnabled %}
+            <input type="hidden" name="{{ csrfParameterName }}" value="{{ csrf_token(csrfTokenId) }}">
+        {% endif %}
+        <button type="submit">Login</button>
+        <div>
+            Switch to
+            {% for provider in availableTwoFactorProviders|filter(provider => provider != twoFactorProvider) %}
+                <a href="{{ path("2fa_login", {"preferProvider": provider}) }}">{{ providerInfo[provider] }}</a>{{ not loop.last ? ', ' : '' }}
+            {% endfor %}
+        </div>
+        <div><a href="{{ logoutPath }}">Cancel</a> login</div>
+    </form>
+    <p class="login-copy">&copy; 2021 Qossmic GmbH</p>
+
+{% endblock %}
