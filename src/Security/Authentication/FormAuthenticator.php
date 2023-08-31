@@ -11,6 +11,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
@@ -39,7 +41,11 @@ final class FormAuthenticator extends AbstractAuthenticator implements Authentic
 
         return new Passport(
             new UserBadge($username),
-            new PasswordCredentials($password)
+            new PasswordCredentials($password),
+            [
+                new CsrfTokenBadge('authenticate', (string) $request->request->get('token')),
+                new RememberMeBadge()
+            ]
         );
     }
 
