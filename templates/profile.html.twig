@@ -7,5 +7,20 @@
             <th>Username</th>
             <td>{{ user.displayName }}</td>
         </tr>
+        <tr>
+            <th>Google Authenticator</th>
+            <td>
+                {% if app.flashes('2fa_reset_google_authenticator')|length > 0 %}
+                    <p>Please scan this code to connect your Google Authenticator App.</p>
+                    <p><span class="warning">This code will only be visible once.</span></p>
+                    <p>
+                        <img class="qr-code" alt="Google Authenticator Code" src="{{ google_auth_qr_code() }}"></p>
+                {% else %}
+                    <p>
+                        <a href="{{ path('app_reset_google_authenticator') }}">Connect</a> a
+                        Google Authenticator App. This will invalidate your current one, if registered.</p>
+                {% endif %}
+            </td>
+        </tr>
     </table>
 {% endblock %}
