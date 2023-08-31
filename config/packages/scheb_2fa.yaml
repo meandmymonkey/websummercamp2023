@@ -9,3 +9,7 @@ scheb_two_factor:
         sender_name: Workshop System
         digits: 8
         template: security/2fa.html.twig
+    google:
+        enabled: true
+        template: security/2fa.html.twig
+
